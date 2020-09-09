@@ -22,8 +22,7 @@ export default {
     'Header': Header,
     'Footer': Footer,
     'TodoInput': TodoInput,
-    'TodoList': TodoList,
-
+    'TodoList': TodoList
   },
   name: 'hello',
   data () {
