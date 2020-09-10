@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import to_do_app from '@/pages/to_do_app'
-// import Hello2 from '@/components/Hello2'
+import ToDoApp from '@/pages/ToDoApp'
+import ToDoDetail from '@/pages/ToDoDetail'
 
 Vue.use(Router)
 
@@ -10,8 +10,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'to_do_app',
-      component: to_do_app
+      name: 'ToDoApp',
+      component: ToDoApp
+    },
+    {
+      path: '/ToDoDetail',
+      name: 'ToDoDetail',
+      component: ToDoDetail
     }
   ]
 })

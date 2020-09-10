@@ -1,6 +1,6 @@
 <template>
   
-  <div class="footertest">
+  <div class="footertest" style="width:300px;">
     <h3>{{ msg }}</h3>
     
   </div>
@@ -15,7 +15,7 @@ export default {
   },
   data () {
     return {
-      msg: 'footertest'
+      msg: '-'
     }
   },
   methods: {

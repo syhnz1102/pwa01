@@ -1,6 +1,6 @@
 <template>
   
-  <div class="headertest">
+  <div class="headertest" style="width:300px;">
     <!-- <h1 @click="handleClick">to-do-app</h1> -->
     <h1>{{ msg }}</h1>
     <form>

@@ -1,9 +1,13 @@
 <template>
   
   <div>
-    <div>{{ msg }}</div>
-    <div>
-      <div class="lists"></div>
+    
+    <div style="width:300px; text-align:left; ">
+      <input class="todo1"
+        type="checkbox"
+        :checked="todo.checked"
+      >
+      <a @click="detailButton"> {{todo.text}} </a>
     </div>
     
   </div>
@@ -15,13 +19,27 @@ export default {
   name: 'TodoList',
   data () {
     return {
-      msg: 'list'
     }
   },
-  methods:{
-    function () {
-      
+  props:{
+    todo:{
+      type:Object
     }
+  },
+  methods: {
+    detailButton(){
+      // alert(this.todo.id);
+      // this.$emit("detailbtn",{
+      //   id : this.todo.id,
+      //   text: this.todo.text,
+      //   checked:this.todo.checked
+      // })
+      // alert("d");
+
+      this.$router.push({path: 'ToDoDetail', query: {id: this.todo.id, text: this.todo.text}});
+      // this.$router.push({path: 'ToDoDetail/' + this.todo.id +'/'+ this.todo.text});
+    }
+    
   }
 }
 </script>
