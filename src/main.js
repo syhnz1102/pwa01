@@ -9,7 +9,7 @@ Vue.config.productionTip = false //모듈안에있는 Vue인터페이스 안의 
 /* eslint-disable no-new */
 new Vue({
   el: '#app', //
-  router, //라우터사용
-  template: '<App/>', //템플릿은 App안에있는 template을 사용
+  router, //라우터사용(임포트): 어떤 URL이 어떤 컴포넌트로 이동시키는지
+  template: '<App/>', //템플릿은 App안에있는 template을 사용? (template: 화면html구성)
   components: { App }
 })

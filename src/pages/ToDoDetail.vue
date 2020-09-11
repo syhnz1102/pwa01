@@ -1,13 +1,17 @@
 <template>
   <div>
       <Header/>
-      <div style="width:300px;height:400px;overflow:auto;">
+
+
+      <div style="width:300px; height:400px; overflow:auto;">
         <!-- {{ $route.query.id }} -->
         
-        <div v-if="!update">{{todoText}}</div>
+        <!-- <div v-if="!update" style="word-break:break-all">{{todoText}}</div> -->
+        <div v-if="!update" :class="{ wordbreak : true }">{{todoText}}</div>
         <div v-if="update">
             <input type="text" v-model="todoText">
         </div>
+        <br />
         <button v-if="!update" @click="updateTodo">수정</button>
         <button v-if="update" @click="okTodo">수정완료</button>
         <button @click="deleteTodo">삭제</button>
@@ -21,7 +25,9 @@
       v-bind:todo="todo"
       @detailbtn="detailButton"
       /> -->
-      
+      <div style="position:absolute;left:0px">
+    
+      </div>
       <Footer/>
   </div>
 </template>
@@ -72,5 +78,5 @@ export default {
 </script>
 
 <style>
-
+.wordbreak{word-break: break-all;}
 </style>

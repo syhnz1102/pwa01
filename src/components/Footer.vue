@@ -1,8 +1,11 @@
 <template>
   
   <div class="footertest" style="width:300px;">
-    <h3>{{ msg }}</h3>
-    
+    <router-link to="/">
+      <h3>
+        {{ msg }}
+      </h3>
+    </router-link>
   </div>
 
 </template>
@@ -15,7 +18,7 @@ export default {
   },
   data () {
     return {
-      msg: '-'
+      msg: '메인으로'
     }
   },
   methods: {

@@ -3,11 +3,8 @@
   <div>
     
     <div style="width:300px; text-align:left; ">
-      <input class="todo1"
-        type="checkbox"
-        :checked="todo.checked"
-      >
-      <a @click="detailButton"> {{todo.text}} </a>
+      <input class="todo1" type="checkbox" :checked="todoprop.checked" @change="finished">
+      <a style="word-break: break-all;" @click="detailButton" v-bind:class="{ line : linebool }"> {{ todoprop.text }} </a>
     </div>
     
   </div>
@@ -19,25 +16,27 @@ export default {
   name: 'TodoList',
   data () {
     return {
+      linebool:false
     }
   },
   props:{
-    todo:{
+    todoprop:{
       type:Object
     }
+
   },
   methods: {
     detailButton(){
-      // alert(this.todo.id);
-      // this.$emit("detailbtn",{
-      //   id : this.todo.id,
-      //   text: this.todo.text,
-      //   checked:this.todo.checked
-      // })
-      // alert("d");
-
-      this.$router.push({path: 'ToDoDetail', query: {id: this.todo.id, text: this.todo.text}});
-      // this.$router.push({path: 'ToDoDetail/' + this.todo.id +'/'+ this.todo.text});
+      this.$router.push({path: 'ToDoDetail', query: { id: this.todoprop.id, text: this.todoprop.text }});
+    },
+    finished(){
+      // this.todoprop.text='끝';
+      
+      if(this.linebool){
+        this.linebool=false;
+      }else{
+        this.linebool=true;
+      }
     }
     
   }
@@ -65,7 +64,5 @@ a {
 }
 
 /* 추가 */
-
-.alignleft{text-align: left;}
-.box{width:100px;height:200px;}
+.line{text-decoration: line-through;color:grey}
 </style>

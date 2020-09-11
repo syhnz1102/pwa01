@@ -5,20 +5,35 @@
     <div style="width:300px;height:400px;overflow:auto;">
       <form @submit.prevent="addList">
         <input id="input01"
-            v-bind:type="type"
+            type="text"
+            v-model="inputText"
             placeholder="할 일을 입력하세요."
             style="width:244px; height:26px;"
         >
-
-        <button style="height:33px;">{{add}}</button>
+        <button style="height:33px;"> {{ add }} </button>
       </form>
       <p style="text-align:center">할일 리스트</p>
       <hr>
-    
+
+    <!--
+      
+    밑에 TodoList 설명
+    1.컴포넌트를 불러옴
+    2.v-bind:todoprop="tododata"
+      prop에 등록한 todoprop에 넣어줄 부모콤포넌트의 데이터인 tododata를 바인드
+    3.v-for="tododata in todos"
+      컴포넌트안에 for를 통해 원하는 데이터를 쭉 출력
+      (이때 in앞에 오는 게 todos안의 데이터에 대한 이름정의)
+    4.v-bind:key="tododata.id"
+      키값으로 tododata.id를 지정(v-for에서는 key등록 필수)
+    5.자식콤포넌트는 받은 데이터를 "todoprop.데이터안의 key값" 형식으로 사용가능
+
+    -->
+
       <TodoList
-        v-for="todo in todos"
-        v-bind:key="todo.id"
-        v-bind:todo="todo"
+        v-for="tododata in todos"
+        v-bind:key="tododata.id"
+        v-bind:todoprop="tododata"
       />
     </div>
     <Footer/>
@@ -34,7 +49,7 @@ import Footer from '../components/Footer';
 import TodoList from '../components/TodoList';//추가되는 한줄한줄을 컴포넌트로
 // import datas from '../data/datas;
 
-let idnum = 2;
+let idnum = 0;
 
 export default {
   components: {
@@ -45,35 +60,25 @@ export default {
   name: 'hello',
   data () {
     return {
-      type:'text',
       add:'추가',
-      todos: [
-        // {id:1, text: '할일1', checked: false},//기본적으로 들어가있게
-        // {id:2, text: '할일2', checked: false}
-      ]
+      todos: [],
+      inputText:''
     }
   },
   methods:{
     addList(e) {
-      let inputText=document.getElementById("input01");
-      if(inputText.value!=''){
+      if(this.inputText==''){
+        alert('할 일을 입력하세요');
+      }else{
         idnum ++;
         this.todos.push({//todos안에 밑의 내용들을 push한다(화면구성)
           id: idnum,
-          text: inputText.value,
+          text: this.inputText,
           checked:false
         });
-        inputText.value = '';
-        // console.log(e.target.value);
-      }else{
-        alert('할 일을 입력하세요');
       }
+      this.inputText=''
     }
-    // detailButton({id,text,checked}) {
-    //   console.log(id,text,checked);
-    //   // this.$router.push({path: 'detail'});
-    // }
-
   }
 }
 </script>
