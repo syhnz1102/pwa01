@@ -30,7 +30,7 @@ export default {
       this.$router.push({path: 'ToDoDetail', query: { id: this.todoprop.id, text: this.todoprop.text }});
     },
     finished(){
-      // this.todoprop.text='끝';
+      // this.todoprop.text='끝';ddd
       
       if(this.linebool){
         this.linebool=false;
